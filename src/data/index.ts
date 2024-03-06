@@ -20,6 +20,6 @@ export const INPUTS: IInput[] = [
     id: uuid(),
     name: "email",
     label: "email adderss",
-    type: "email",
+    type: "text",
   },
 ];

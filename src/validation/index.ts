@@ -7,6 +7,6 @@ export const validate = ({ email }: IInputsValues) => {
     email
   );
 
-  if (!email.trim() || !VALIDEMAIL) errors.email = email;
+  if (!email.trim() || !VALIDEMAIL) errors.email = "Valid email required";
   return errors;
 };

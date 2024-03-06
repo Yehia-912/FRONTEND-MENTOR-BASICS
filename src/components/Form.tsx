@@ -1,11 +1,14 @@
-import { ReactNode } from "react";
+import { FormHTMLAttributes, ReactNode } from "react";
 
-
-interface IProps {
+interface IProps extends FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode;
 }
-const Form = ({ children }: IProps) => {
-  return <form method="post">{children}</form>;
+const Form = ({ children, ...rest }: IProps) => {
+  return (
+    <form method="post" {...rest}>
+      {children}
+    </form>
+  );
 };
 
 export default Form;
