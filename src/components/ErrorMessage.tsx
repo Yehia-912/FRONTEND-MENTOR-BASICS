@@ -3,7 +3,7 @@ interface IProps {
 }
 
 const ErrorMessage = ({ message }: IProps) => {
-  return <span className="text-[0.65rem] text-red-500">{message}</span>;
+  return <span className="text-[0.65rem] text-primary">{message}</span>;
 };
 
 export default ErrorMessage;

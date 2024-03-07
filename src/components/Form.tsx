@@ -5,7 +5,7 @@ interface IProps extends FormHTMLAttributes<HTMLFormElement> {
 }
 const Form = ({ children, ...rest }: IProps) => {
   return (
-    <form method="post" {...rest}>
+    <form method="post" className="flex flex-col gap-4" {...rest}>
       {children}
     </form>
   );

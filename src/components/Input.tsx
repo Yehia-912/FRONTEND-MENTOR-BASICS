@@ -38,17 +38,18 @@ const Input = ({
       </div>
 
       <input
-        className={`border block w-full mt-2 border-grey rounded-lg text-grey caret-grey 
-                   text-sm px-[1.20rem] py-[1rem] focus:outline-none focus:caret-darker-grey
-                   focus:text-darker-grey  focus:border-darker-grey hover:shadow-sm
-                   duration-150 hover:text-darker-grey hover:border-darker-grey ${
-                     valid
-                       ? ""
-                       : `bg-[#ffe8e6] border-[#f5908e] text-[#f5908e]
-                        hover:border-primary
-                        hover:text-primary focus:caret-primary
-                       focus:text-primary  focus:border-primary `
-                   }`}
+        className={`border block w-full mt-2 rounded-lg text-sm px-[1.20rem] py-[1rem] focus-visible:outline-none caret-grey  focus:outline-none${
+          valid
+            ? `border-grey  text-grey 
+                focus:caret-darker-grey
+                focus:text-darker-grey   focus:border-darker-grey hover:shadow-sm
+                duration-150 hover:text-darker-grey hover:border-darker-grey`
+            : `bg-[#ffe8e6] border border-[#ff6257f1] text-[#ff6257ef]
+                hover:border-primary
+                placeholder:text-primary
+                hover:text-primary focus:caret-primary
+                focus:text-primary  focus:border-primary `
+        }`}
         placeholder="email@company.com"
         type={type}
         id={id}

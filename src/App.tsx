@@ -9,6 +9,7 @@ import Button from "./components/UI/Button";
 import Input from "./components/Input";
 import { INPUTS } from "./data";
 import { validate } from "./validation";
+import Success from "./components/Success";
 
 export const DEFAULT = { email: "" };
 const App = () => {
@@ -16,8 +17,7 @@ const App = () => {
   const [inputs, setInputs] = useState<IInputsValues>(DEFAULT);
   const [errors, setErrors] = useState<IInputsValues>(DEFAULT);
 
-
-  
+  const [success, setSucces] = useState(false);
 
   //renders
   const RENDERINPUTLIST = INPUTS.map((input: IInput) => (
@@ -41,20 +41,39 @@ const App = () => {
       return;
     } else {
       setErrors(DEFAULT);
+      setSucces(true);
     }
   };
-  console.log(errors);
 
   return (
     <div className="min-h-dvh bg-darker-grey grid place-content-center">
-      <div className="bg-white rounded-3xl p-5 ps-12 flex items-center gap-[45px]">
-        <Description>
-          <Form onSubmit={onSubmitHandler}>
-            {RENDERINPUTLIST}
-            <Button>Subscribe to monthly newsletter</Button>
-          </Form>
-        </Description>
-        <Image src="/illustration-sign-up-desktop.svg" />
+      <div className="container">
+        {success ? (
+          <div className="bg-white rounded-3xl  p-10 max-w-[420px] min-h-80 flex flex-col justify-center gap-[20px]">
+            <Success email={inputs.email}>
+              <Button
+                onClick={() => {
+                  setSucces(false);
+                  setInputs(DEFAULT);
+                }}
+              >
+                Dismiss message
+              </Button>
+            </Success>
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-5 ps-12 flex  items-center gap-[45px] w-fit">
+            <>
+              <Description>
+                <Form onSubmit={onSubmitHandler}>
+                  {RENDERINPUTLIST}
+                  <Button>Subscribe to monthly newsletter</Button>
+                </Form>
+              </Description>
+              <Image src={"/illustration-sign-up-desktop.svg"} />
+            </>
+          </div>
+        )}
       </div>
     </div>
   );
